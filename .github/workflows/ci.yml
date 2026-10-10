@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build --parallel
+
+      - name: Run unit tests
+        run: ctest --test-dir build --output-on-failure
+
+      - name: Smoke-test the CLI with scripted input
+        run: |
+          cp -r data /tmp/wms-data
+          printf '1\ncustomer\nCustomer@2026\n2\nPacking Tape\n60\ny\n3\n2\n' \
+            | ./build/warehouse --data /tmp/wms-data | tee /tmp/session.txt
+          grep -q "Total due      175.50" /tmp/session.txt
