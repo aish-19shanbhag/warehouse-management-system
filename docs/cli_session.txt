@@ -1,0 +1,116 @@
+$ printf '1\ncustomer\nCustomer@2026\n1\n2\nPacking Tape\n60\ny\n3\n2\n' | ./build/warehouse --data data
+==============================================================
+                 WAREHOUSE MANAGEMENT SYSTEM
+==============================================================
+
+  1. Log in
+  2. Quit
+
+Choice: 1
+Username: customer
+Password: *************
+
+  Welcome, customer (Customer).
+
+--------------------------------------------------------------
+  CUSTOMER MENU  (logged in as customer)
+--------------------------------------------------------------
+  1. View stock
+  2. Purchase
+  3. Log out
+
+Choice: 1
+
+  PRODUCT                     UNIT PRICE    IN STOCK
+  --------------------------------------------------
+  Pallet Jack                     349.00          12
+  Stretch Wrap Roll                18.75         140
+  Packing Tape                      3.25         600
+  Corrugated Box (Large)            2.10         850
+  Barcode Scanner                 129.99          25
+  Safety Gloves (Pair)              6.50         300
+  Shelf Label Pack                  9.80          75
+  Hand Truck                       89.00          18
+  8 product(s)
+
+--------------------------------------------------------------
+  CUSTOMER MENU  (logged in as customer)
+--------------------------------------------------------------
+  1. View stock
+  2. Purchase
+  3. Log out
+
+Choice: 2
+Product name: Packing Tape
+Quantity: 60
+
+  ORDER SUMMARY
+  ------------------------------------
+  Product        Packing Tape
+  Quantity       60 x 3.25
+  Subtotal       195.00
+  Bulk discount  -19.50 (10%)
+  Total due      175.50
+  ------------------------------------
+Confirm purchase? (y/n): y
+  Payment of 175.50 recorded. 540 unit(s) of 'Packing Tape' left.
+
+--------------------------------------------------------------
+  CUSTOMER MENU  (logged in as customer)
+--------------------------------------------------------------
+  1. View stock
+  2. Purchase
+  3. Log out
+
+Choice: 3
+  Logged out.
+
+  1. Log in
+  2. Quit
+
+Choice: 2
+
+Goodbye.
+
+$ printf '1\npicker\nPicker@2026\n2\nHand Truck\n12\n3\n2\n' | ./build/warehouse --data data
+==============================================================
+                 WAREHOUSE MANAGEMENT SYSTEM
+==============================================================
+
+  1. Log in
+  2. Quit
+
+Choice: 1
+Username: picker
+Password: ***********
+
+  Welcome, picker (Picker).
+
+--------------------------------------------------------------
+  PICKER MENU  (logged in as picker)
+--------------------------------------------------------------
+  1. View stock
+  2. Refill stock
+  3. Log out
+
+Choice: 2
+Product name: Hand Truck
+Units to add: 12
+  Refilled. 'Hand Truck' now has 30 unit(s).
+
+--------------------------------------------------------------
+  PICKER MENU  (logged in as picker)
+--------------------------------------------------------------
+  1. View stock
+  2. Refill stock
+  3. Log out
+
+Choice: 3
+  Logged out.
+
+  1. Log in
+  2. Quit
+
+Choice: 2
+
+Goodbye.

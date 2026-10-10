@@ -1,0 +1,80 @@
+[ PASS ] Auth / hashPassword is SHA-256 of salt followed by password
+[ PASS ] Auth / salts are 32 hex chars and differ between calls
+[ PASS ] Auth / same password gives different hashes for different users
+[ PASS ] Auth / correct password authenticates and returns the role
+[ PASS ] Auth / usernames are case-insensitive, passwords are case-sensitive
+[ PASS ] Auth / wrong password, unknown user and empty input are all rejected
+[ PASS ] Auth / plaintext passwords are never stored
+[ PASS ] Validation / addUser rejects bad usernames, duplicates and short passwords
+[ PASS ] Auth / constantTimeEquals compares exactly
+[ PASS ] Persistence / users.csv round trip keeps logins working
+[ PASS ] Validation / corrupt users.csv rows are rejected
+[ PASS ] Auth / shipped data/users.csv holds the three documented demo accounts
+[ PASS ] CLI / customer purchase with bulk discount, end to end
+[ PASS ] CLI / declining the order summary leaves stock unchanged
+[ PASS ] CLI / each role sees only its permitted menu entries
+[ PASS ] CLI / three failed logins return to the main menu
+[ PASS ] CLI / supplier add, refill and remove through the menus
+[ PASS ] CLI / invalid input shows an error and the session continues
+[ PASS ] CLI / end of input exits cleanly from any menu
+[ PASS ] Persistence / Warehouse writes every committed change to its CSV file
+[ PASS ] Inventory / add keeps insertion order and size
+[ PASS ] Inventory / add rejects a duplicate product name (case-insensitive)
+[ PASS ] Inventory / get and contains find products case-insensitively
+[ PASS ] Inventory / remove deletes only the named product
+[ PASS ] Validation / unknown products raise NotFoundError for every operation
+[ PASS ] Inventory / refill adds units to an existing product
+[ PASS ] Inventory / purchase withdraws stock and returns a receipt
+[ PASS ] Inventory / failed purchase leaves stock unchanged
+[ PASS ] Persistence / CSV write produces the documented human-readable format
+[ PASS ] Persistence / CSV round trip through a stream preserves every field
+[ PASS ] Persistence / save then load from disk round-trips and leaves no temp file
+[ PASS ] Persistence / loading a missing file gives an empty inventory
+[ PASS ] Persistence / reader tolerates CRLF line endings and blank lines
+[ PASS ] Validation / corrupt CSV rows are rejected with the line number
+[ PASS ] Persistence / the shipped data/inventory.csv sample loads cleanly
+[ PASS ] Validation / parseInt accepts only whole numbers
+[ PASS ] Permissions / Supplier may view, add, refill and remove but not purchase
+[ PASS ] Permissions / Customer may view and purchase only
+[ PASS ] Permissions / Picker may view and refill only
+[ PASS ] Permissions / allowedActions lists actions in menu order
+[ PASS ] Permissions / requirePermission throws PermissionDeniedError
+[ PASS ] Permissions / parseRole accepts any letter case and rejects unknown roles
+[ PASS ] Warehouse / Supplier operations succeed end to end
+[ PASS ] Warehouse / Customer is blocked from stock changes, inventory untouched
+[ PASS ] Warehouse / Picker can refill but not add, remove or purchase
+[ PASS ] Warehouse / permission is checked before input validation
+[ PASS ] Warehouse / quote prices an order without changing stock
+[ PASS ] Pricing / discount tiers: 0% below 20, 5% from 20, 10% from 50
+[ PASS ] Pricing / small order total is price times quantity with no discount
+[ PASS ] Pricing / order of exactly 20 units gets 5% off
+[ PASS ] Pricing / order of 60 units gets 10% off
+[ PASS ] Pricing / discount is rounded half-up to the nearest cent
+[ PASS ] Pricing / money math is exact (no float drift)
+[ PASS ] Pricing / pricing does not change stock and rejects bad quantities
+[ PASS ] Pricing / large orders do not overflow
+[ PASS ] SHA-256 / empty string
+[ PASS ] SHA-256 / "abc" (FIPS 180-4 one-block example)
+[ PASS ] SHA-256 / 448-bit message (FIPS 180-4 two-block example)
+[ PASS ] SHA-256 / 896-bit message
+[ PASS ] SHA-256 / one million 'a' characters, fed in uneven chunks
+[ PASS ] SHA-256 / padding boundaries at 55, 56 and 64 bytes match one-shot hashing
+[ PASS ] Stock / constructor stores name, price and quantity
+[ PASS ] Stock / constructor trims surrounding whitespace in the name
+[ PASS ] Stock / zero starting quantity is allowed
+[ PASS ] Stock / rejects negative quantity
+[ PASS ] Stock / rejects zero and negative prices
+[ PASS ] Stock / rejects quantity above the per-item limit
+[ PASS ] Stock / withdraw reduces quantity
+[ PASS ] Stock / withdraw more than available throws and leaves quantity unchanged
+[ PASS ] Stock / withdraw rejects zero and negative quantities
+[ PASS ] Stock / refill increases quantity
+[ PASS ] Stock / refill rejects non-positive quantities and overflow past the limit
+[ PASS ] Stock / matches names case-insensitively
+[ PASS ] Validation / product names: empty, too long, commas, quotes, control chars
+[ PASS ] Validation / the 2021 buffer overflow input (12+ chars) is handled safely
+[ PASS ] Money / parses whole, one-decimal and two-decimal prices
+[ PASS ] Validation / malformed and negative prices are rejected
+[ PASS ] Money / formats cents with exactly two decimals
+
+78 tests, 78 passed, 0 failed, 261 assertions
